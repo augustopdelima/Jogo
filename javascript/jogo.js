@@ -257,12 +257,7 @@ function criarJogo({ contexto, canvas, jogador, terreno, obstaculo, divReinicarJ
         desenharJogo: function () {
             this.limparTela();
 
-            if (this.jogando) {
-                this.indiceDoQuadroDesenhado = requestAnimationFrame(() => {
-                    this.desenharJogo();
-                });
-            }
-
+        
 
             this.desenharTerreno();
 
@@ -270,13 +265,16 @@ function criarJogo({ contexto, canvas, jogador, terreno, obstaculo, divReinicarJ
 
             this.desenharJogador();
 
-
             this.obstaculos.forEach((obstaculo) => {
                 this.desenharObstaculo(obstaculo, this.velocidadeJogo);
                 this.detectarColisao(obstaculo, this.indiceDoQuadroDesenhado);
             });
 
-            console.log(this.velocidadeJogo);
+            if (this.jogando) {
+                this.indiceDoQuadroDesenhado = requestAnimationFrame(() => {
+                    this.desenharJogo();
+                });
+            }
 
         },
 
@@ -379,6 +377,7 @@ const objetoJogo = {
 
 const jogo = criarJogo(objetoJogo);
 
+jogo.desenharJogo();
 
 window.addEventListener('keypress', () => {
     divInicioJogo.style.display = 'none';
