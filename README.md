@@ -11,4 +11,4 @@
 
 ## O que falta?
 * Adicionar os sprites do dinossauro
-* Adicionar os sprites do obstáculos
+* Adicionar os sprites dos obstáculos
