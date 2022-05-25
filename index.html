@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Dino</title>
+
+    <link rel="stylesheet" href="./css/estilos.css">
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="titulo">JOGO</h1>
+    </header>
+    <section class="container">
+        <div class="conteudo">
+            <canvas id="canvas">
+
+            </canvas>
+        </div>
+
+
+        <div class="conteudo div-placar">
+            <div>
+                <span class="placar texto">PLACAR:</span>
+                <span class="placar numero" id="placar-span">0</span>
+            </div>
+            <div>
+                <span class="placar texto">MAIOR PONTUAÇÃO:</span>
+                <span class="placar numero" id="maior-placar">0</span>
+            </div>
+        </div>
+
+        <div id="div-iniciar" class="div-flutuante">
+            <div>
+                <h1>Pressione qual quer tecla para iniciar o jogo</h1>
+            </div>
+        </div>
+
+        <div id="div-reiniciar" class="div-flutuante">
+            <div>
+                <h1>Aperte o botão para reiniciar o jogo</h1>
+                <button id="botao-reiniciar">REINICIAR O JOGO!</button>
+            </div>
+        </div>
+    </section>
+
+
+
+    <script src="./javascript/jogo.js">
+
+    </script>
+
+
+</body>
+
+</html>

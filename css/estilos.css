@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    display:  flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+}
+
+.titulo {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+}
+
+.conteudo {
+    max-width: 800px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.div-placar {
+    display: flex;
+    gap: 20px;
+}
+
+#canvas {
+    border-radius: 25px;
+    border: 1px solid rgb(172, 172, 172); 
+    width: 100%;
+    height: 300px;
+    display: block;
+}
+
+.placar {
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    font-weight: 500;
+}
+
+
+.texto {
+    border-bottom: 2px solid;
+}
+.numero {
+    font-weight: bolder;
+}
+
+.div-flutuante {
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.div-flutuante div {
+    background-color: white;
+    padding: 40px;
+    max-width: 500px;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-flutuante div h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    text-align: justify;
+}
+
+.div-flutuante div button {
+    background-color:  blue;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bolder;
+    border: none;
+    border-radius: 10px;
+
+    color: rgb(255, 255, 255);
+}
+
+
