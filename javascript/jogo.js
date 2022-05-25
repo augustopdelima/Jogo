@@ -158,8 +158,6 @@ function criarJogo({ contexto, canvas, jogador, terreno, obstaculo, divReinicarJ
         identificadorIntervaloObtaculo: 0,
         identificadorIntervaloPontos: 0,
         indetificadorIntervaloVelocidade: 0,
-        placarHtml,
-        maiorPlacarHtml,
         divReinicarJogo,
         botaoReiniciar,
         pausado: false,
