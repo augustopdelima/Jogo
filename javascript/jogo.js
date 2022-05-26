@@ -3,7 +3,6 @@ function criarDinossauro() {
         POSICAO_PADRAO_X: 10,
         POSICAO_PADRAO_Y: 95,
         
-        posicaoAtualX: 10,
         posicaoAtualY: 95,
 
         novoDinossauro: () => { return criarDinossauro() },
@@ -136,7 +135,7 @@ function criarTerreno(canvas) {
 }
 
 
-function criarJogo({ contexto, canvas, jogador, terreno, obstaculo, divReinicarJogo }) {
+function criarJogo({ contexto, canvas, jogador, terreno, obstaculo, divReiniciarJogo }) {
     return {
         PONTOS_PARA_RECEBER: 1,
         obstaculos: [],
@@ -157,14 +156,14 @@ function criarJogo({ contexto, canvas, jogador, terreno, obstaculo, divReinicarJ
         OBSTACULO_ALTURAS: [40, 20],
         identificadorIntervaloObtaculo: 0,
         identificadorIntervaloPontos: 0,
-        indetificadorIntervaloVelocidade: 0,
-        divReinicarJogo,
+        identificadorIntervaloVelocidade: 0,
+        divReiniciarJogo,
         botaoReiniciar,
         pausado: false,
 
 
         setarValoresIniciais: function () {
-            clearInterval(this.indetificadorIntervaloVelocidade);
+            clearInterval(this.identificadorIntervaloVelocidade);
             clearInterval(this.identificadorIntervaloPontos);
             clearInterval(this.identificadorIntervaloObtaculo);
             this.obstaculos = [];
@@ -204,7 +203,7 @@ function criarJogo({ contexto, canvas, jogador, terreno, obstaculo, divReinicarJ
         },
 
         aumentarPontos: function () {
-            this.indetificadorIntervaloPontos = setInterval(() => {
+            this.identificadorIntervaloPontos = setInterval(() => {
                 if (this.jogando && !this.pausado) {
                     this.jogador.setarPontos(this.PONTOS_PARA_RECEBER);
                     this.jogador.setarPlacar();
@@ -214,7 +213,7 @@ function criarJogo({ contexto, canvas, jogador, terreno, obstaculo, divReinicarJ
         },
 
         aumentarVelocidade: function () {
-            this.indetificadorIntervaloVelocidade = setInterval(() => {
+            this.identificadorIntervaloVelocidade = setInterval(() => {
                 if (this.jogando && !this.pausado) {
                     this.velocidadeJogo += this.AUMENTO_VELOCIDADE;
                 }
@@ -222,7 +221,7 @@ function criarJogo({ contexto, canvas, jogador, terreno, obstaculo, divReinicarJ
         },
 
         gerarObstaculos: function (obstaculos) {
-            this.indetificadorIntervaloObstaculo = setInterval(() => {
+            this.identificadorIntervaloObstaculo = setInterval(() => {
                 if (this.jogando && !this.pausado) {
                     const tipoObstaculo = Math.round(Math.random() * (2 - 1) + 1);
 
@@ -280,8 +279,8 @@ function criarJogo({ contexto, canvas, jogador, terreno, obstaculo, divReinicarJ
 
 
         detectarColisao: function (obstaculo, indiceDoQuadroDesenhado) {
-            const testeColisaoPorPosicaoLarguraObstaculo = this.dinossauro.posicaoAtualX < obstaculo.posicaoX + obstaculo.largura;
-            const testeColisaoPorPosicaoLarguraDino = this.dinossauro.posicaoAtualX + this.dinossauro.larguraAtual > obstaculo.posicaoX;
+            const testeColisaoPorPosicaoLarguraObstaculo = this.dinossauro.POSICAO_PADRAO_X < obstaculo.posicaoX + obstaculo.largura;
+            const testeColisaoPorPosicaoLarguraDino = this.dinossauro.POSICAO_PADRAO_X + this.dinossauro.larguraAtual > obstaculo.posicaoX;
             const testeColisaoPorPosicaoAlturaObstaculo = this.dinossauro.posicaoAtualY < obstaculo.posicaoY + obstaculo.altura;
             const testeColisaoPorPosicaoAlturaDino = this.dinossauro.posicaoAtualY + this.dinossauro.alturaAtual > obstaculo.posicaoY;
 
@@ -301,12 +300,12 @@ function criarJogo({ contexto, canvas, jogador, terreno, obstaculo, divReinicarJ
 
         reiniciarJogo: function () {
             this.jogador.setarMaiorPlacar();
-            this.divReinicarJogo.style.display = 'flex';
+            this.divReiniciarJogo.style.display = 'flex';
             this.pausado = true;
             this.botaoReiniciar.addEventListener('click', () => {
                 if (!this.jogando) {
 
-                    this.divReinicarJogo.style.display = 'none';
+                    this.divReiniciarJogo.style.display = 'none';
                     this.iniciarJogo();
                 }
 
@@ -328,7 +327,7 @@ function criarJogo({ contexto, canvas, jogador, terreno, obstaculo, divReinicarJ
         desenharJogador: function () {
             this.dinossauro.atualizarPosicao(this.GRAVIDADE);
             this.contexto.fillStyle = 'blue';
-            this.contexto.fillRect(this.dinossauro.posicaoAtualX, this.dinossauro.posicaoAtualY, this.dinossauro.larguraAtual, this.dinossauro.alturaAtual);
+            this.contexto.fillRect(this.dinossauro.POSICAO_PADRAO_X, this.dinossauro.posicaoAtualY, this.dinossauro.larguraAtual, this.dinossauro.alturaAtual);
 
         },
 
@@ -344,10 +343,10 @@ function criarJogo({ contexto, canvas, jogador, terreno, obstaculo, divReinicarJ
 }
 
 
-const divReinicarJogo = document.getElementById('div-reiniciar');
+const divReiniciarJogo = document.getElementById('div-reiniciar');
 const divInicioJogo = document.getElementById('div-iniciar');
 
-divReinicarJogo.style.display = 'none';
+divReiniciarJogo.style.display = 'none';
 
 const botaoReiniciar = document.getElementById('botao-reiniciar');
 
@@ -371,7 +370,7 @@ const objetoJogo = {
     jogador,
     terreno,
     obstaculo,
-    divReinicarJogo,
+    divReiniciarJogo,
     botaoReiniciar
 };
 
